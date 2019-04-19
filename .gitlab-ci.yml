@@ -1,0 +1,40 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+stages:
+  - build
+  - deploy
+
+before_script:
+  - docker info
+  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+
+# build stage
+
+build:
+  stage: build
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE" .
+    - docker push "$CI_REGISTRY_IMAGE"
+  only:
+    - master
+
+# deploy stage
+
+deploy:
+  stage: deploy
+  before_script:
+    - mkdir -p ~/.ssh
+    - echo "$SSH_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - which ssh-agent || (apk add --update openssh-client)
+    - eval "$(ssh-agent -s)"
+    - ssh-add ~/.ssh/id_rsa
+    - ssh-keyscan -H dev.steffbeckers.eu >> ~/.ssh/known_hosts
+  script:
+    - scp -r ./docker-compose.yml root@dev.steffbeckers.eu:~/compositions/$CI_PROJECT_PATH/docker-compose.yml
+    - ssh root@dev.steffbeckers.eu "docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}; cd ~/compositions/$CI_PROJECT_PATH/; docker pull "$CI_REGISTRY_IMAGE"; docker stack deploy --compose-file docker-compose.yml angular --with-registry-auth"
+  only:
+    - master
