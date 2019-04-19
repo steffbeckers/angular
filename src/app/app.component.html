@@ -1,1 +1,10 @@
-<router-outlet></router-outlet>
+<nav>
+  <ul>
+    <li [routerLink]="['/']" routerLinkActive="router-link-active" [routerLinkActiveOptions]="{ exact: true }">Home</li>
+    <li [routerLink]="['/about']" routerLinkActive="router-link-active">About</li>
+    <li [routerLink]="['/todos']" routerLinkActive="router-link-active">Todos</li>
+  </ul>
+</nav>
+<section class="content">
+  <router-outlet></router-outlet>
+</section>
