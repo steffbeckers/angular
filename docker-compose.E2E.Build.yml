@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-  app:
+  app-e2e-tests:
     image: registry.gitlab.com/steffbeckers/angular:e2e
     build:
       context: .
