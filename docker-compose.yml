@@ -3,12 +3,7 @@ version: '3.7'
 services:
   app:
     image: registry.gitlab.com/steffbeckers/angular
-    networks:
-      - reverse-proxy_default
-    deploy:
-      mode: replicated
-      replicas: 2
-
-networks:
-  reverse-proxy_default:
-    external: true
+    restart: always
+    container_name: angular_app
+    ports:
+      - 8080:80
