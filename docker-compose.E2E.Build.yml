@@ -1,0 +1,8 @@
+version: '3.7'
+
+services:
+  app:
+    image: registry.gitlab.com/steffbeckers/angular:e2e
+    build:
+      context: .
+      dockerfile: e2e.Dockerfile

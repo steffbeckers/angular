@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  app:
+    image: registry.gitlab.com/steffbeckers/angular
+
+  app-e2e-tests:
+    image: registry.gitlab.com/steffbeckers/angular:e2e
+    command: dockerize -wait tcp://app:80
+      -wait tcp://selenium-standalone-chrome:4444
+      -timeout 10s -wait-retry-interval 1s bash -c "npm run e2e"
+    depends_on:
+      - app
+      - selenium-standalone-chrome
+
+  selenium-standalone-chrome:
+    image: selenium/standalone-chrome
+    expose:
+      - 4444
