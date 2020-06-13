@@ -6,9 +6,9 @@ services:
 
   app-e2e-tests:
     image: registry.gitlab.com/steffbeckers/angular:e2e
-    command: dockerize -wait tcp://app:80
+    command: dockerize -wait tcp://angular.steffbeckers.eu:80
       -wait tcp://selenium-standalone-chrome:4444
-      -timeout 10s -wait-retry-interval 1s bash -c "npm run e2e"
+      -timeout 10s -wait-retry-interval 1s bash -c "npm run e2e.live"
     depends_on:
       - app
       - selenium-standalone-chrome
