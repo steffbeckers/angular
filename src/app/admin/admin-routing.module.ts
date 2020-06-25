@@ -5,8 +5,7 @@ import { AdminComponent } from './admin.component';
 import { OrdersComponent } from './orders/orders.component';
 
 const routes: Routes = [
-  { path: '', component: AdminComponent },
-  { path: 'orders', component: OrdersComponent },
+  { path: '', component: AdminComponent, children: [{ path: 'orders', component: OrdersComponent }] },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
