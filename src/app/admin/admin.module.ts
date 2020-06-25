@@ -7,9 +7,16 @@ import { StoreModule } from '@ngrx/store';
 import * as fromAdmin from './store/reducers/admin.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { AdminEffects } from './store/effects/admin.effects';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
-  declarations: [AdminComponent],
-  imports: [CommonModule, AdminRoutingModule, StoreModule.forFeature(fromAdmin.adminFeatureKey, fromAdmin.reducer), EffectsModule.forFeature([AdminEffects])],
+  declarations: [AdminComponent, OrdersComponent],
+  imports: [
+    CommonModule,
+    AdminRoutingModule,
+    StoreModule.forFeature(fromAdmin.adminFeatureKey, fromAdmin.reducer),
+    EffectsModule.forFeature([AdminEffects]),
+  ],
+  providers: [],
 })
 export class AdminModule {}
