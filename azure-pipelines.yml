@@ -1,0 +1,38 @@
+# Docker
+# Build a Docker image 
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- master
+
+pool:
+  name: Default
+
+steps:
+  - task: Docker@2
+    displayName: "Registry login"
+    inputs:
+      command: login
+      containerRegistry: SteffBeckers
+
+  - task: DockerCompose@0
+    displayName: "Build services"
+    inputs:
+      action: Build services
+      containerregistrytype: Container Registry
+      dockerRegistryEndpoint: SteffBeckers
+      dockerComposeFile: docker-compose.Build.yml
+      projectName: $(Build.Repository.Name)
+      qualifyImageNames: true
+      additionalImageTags: $(Build.BuildId)
+
+  - task: DockerCompose@0
+    displayName: "Push services"
+    inputs:
+      action: Push services
+      containerregistrytype: Container Registry
+      dockerRegistryEndpoint: SteffBeckers
+      dockerComposeFile: docker-compose.Build.yml
+      projectName: $(Build.Repository.Name)
+      qualifyImageNames: true
+      additionalImageTags: $(Build.BuildId)
