@@ -1,0 +1,15 @@
+<h2>
+  Counter
+</h2>
+
+<div>Value: {{ value$ | async }}</div>
+<div>Changed: {{ changed$ | async }}</div>
+<div>State: {{ counter$ | async | json }}</div>
+
+<br />
+
+<div>
+  <button id="increment" (click)="increment()">Increment</button>
+  <button id="decrement" (click)="decrement()">Decrement</button>
+  <button id="reset" (click)="reset()">Reset Counter</button>
+</div>

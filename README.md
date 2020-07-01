@@ -18,7 +18,7 @@ Ran commands for NgRx and modules
 
 `ng generate module admin --route admin --module app.module.ts`
 
-`ng generate feature admin/store/Admin -m admin/admin.module.ts --group`
+`ng generate feature admin/store/Admin --module admin/admin.module.ts --group`
 
 ## Build
 
