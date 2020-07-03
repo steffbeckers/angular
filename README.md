@@ -24,7 +24,7 @@ Ran commands for NgRx and modules
 
 `ng generate feature auth/store/Auth --module auth/auth.module.ts --group`
 
-`ng generate action auth/store/Login --module auth/auth.module.ts --group --creators --api`
+`ng generate action auth/store/Login --group --creators --api`
 
 ## Build
 
