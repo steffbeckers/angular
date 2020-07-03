@@ -9,5 +9,7 @@ export const initialState: State = {};
 
 export const reducer = createReducer(
   initialState,
-  on(AuthActions.loadAuths, (state) => state)
+  on(AuthActions.login, (state) => state),
+  on(AuthActions.loginSuccess, (state) => state),
+  on(AuthActions.loginFailure, (state) => state)
 );
