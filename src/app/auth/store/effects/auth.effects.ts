@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 
 // RxJS
 import { of } from 'rxjs';
-import { map, exhaustMap, catchError, mergeMap } from 'rxjs/operators';
+import { map, exhaustMap, catchError, mergeMap, switchMap } from 'rxjs/operators';
 
 // NgRx
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as AuthActions from '../actions/auth.actions';
+import * as CounterActions from 'src/app/counter/store/actions/counter.actions';
 
 // Services
 import { AuthService } from '../../auth.service';
@@ -47,7 +48,13 @@ export class AuthEffects {
       ofType(AuthActions.loginWithClientIdClientSecret),
       exhaustMap((credentials) =>
         this.authService.loginWithClientIdClientSecret(credentials).pipe(
-          map((authenticated: AuthActions.AuthenticatedDto) => AuthActions.loginWithClientIdClientSecretSuccess(authenticated)),
+          // Only return authentication success action
+          // map((authenticated: AuthActions.AuthenticatedDto) => AuthActions.loginWithClientIdClientSecretSuccess(authenticated)),
+          // Return authentication success action, but also increment counter
+          switchMap((authenticated: AuthActions.AuthenticatedDto) => [
+            AuthActions.loginWithClientIdClientSecretSuccess(authenticated),
+            CounterActions.increment(),
+          ]),
           catchError((error) => of(AuthActions.loginWithClientIdClientSecretFailure(error)))
         )
       )
