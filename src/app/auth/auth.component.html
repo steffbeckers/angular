@@ -12,3 +12,11 @@
     {{ (auth$ | async)?.token }}
   </div>
 </div>
+
+<br />
+<br />
+
+<strong>auth$ | async as auth</strong>
+<div *ngIf="auth$ | async as auth">
+  {{ auth | json }}
+</div>
