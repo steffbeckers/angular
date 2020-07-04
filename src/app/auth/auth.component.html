@@ -37,17 +37,17 @@
       <button (click)="loginWithClientIdClientSecret()">Login</button>
     </div>
     <div *ngIf="auth.authenticated" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
-      <h3>Logout</h3>
       <button (click)="logout()">Logout</button>
     </div>
     <div *ngIf="auth.error" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
       <div>Message: {{ auth.error.message }}</div>
       <div>Error: {{ auth.error.error.error }}</div>
     </div>
-    <div *ngIf="auth.authenticated">
-      <h3>Authenticated! Token:</h3>
-      <div>
-        {{ auth.token }}
+    <div *ngIf="auth.authenticated" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
+      <h3>Hi! You're successfully authenticated.</h3>
+      <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="5px">
+        <div>Token</div>
+        <div class="token">{{ auth.token }}</div>
       </div>
     </div>
   </div>
