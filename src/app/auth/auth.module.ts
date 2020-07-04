@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 // NgRx
 import { StoreModule } from '@ngrx/store';
@@ -22,6 +23,7 @@ import { AuthComponent } from 'src/app/auth/auth.component';
   imports: [
     CommonModule,
     FormsModule,
+    FlexLayoutModule,
     AuthRoutingModule,
     StoreModule.forFeature(fromAuth.authFeatureKey, fromAuth.reducer),
     EffectsModule.forFeature([AuthEffects]),

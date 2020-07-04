@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 // NgRx
 import { Store } from '@ngrx/store';
 import * as fromAuth from 'src/app/auth/store/reducers/auth.reducer';
-import { login, loginWithClientIdClientSecret, loginWithEmailOrUsernamePassword } from 'src/app/auth/store/actions/auth.actions';
+import { login, loginWithClientIdClientSecret, loginWithEmailOrUsernamePassword, logout } from 'src/app/auth/store/actions/auth.actions';
 import { ClientIdClientSecretCredentialsDto, EmailOrUsernamePasswordCredentialsDto } from 'src/app/auth/store/actions/auth.actions';
 import { selectAuthState } from './store/selectors/auth.selectors';
 
@@ -46,5 +46,9 @@ export class AuthComponent implements OnInit {
 
   loginWithClientIdClientSecret(): void {
     this.store.dispatch(loginWithClientIdClientSecret(this.clientIdClientSecretCredentials));
+  }
+
+  logout(): void {
+    this.store.dispatch(logout());
   }
 }

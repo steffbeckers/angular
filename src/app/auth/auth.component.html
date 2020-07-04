@@ -1,55 +1,54 @@
-<h2>Auth</h2>
-
-<div>
-  <h3>Login with single sign-on</h3>
-  <button (click)="login()">Login</button>
-</div>
-
-<div>
-  <h3>Login with e-mail or username and password</h3>
-  <div>
-    <input
-      [(ngModel)]="emailOrUsernamePasswordCredentials.emailOrUsername"
-      type="text"
-      name="emailOrUsername"
-      id="emailOrUsername"
-      placeholder="E-mail or username"
-    />
-    <input [(ngModel)]="emailOrUsernamePasswordCredentials.password" type="password" name="password" id="password" placeholder="Password" />
+<ng-container *ngIf="auth$ | async as auth">
+  <div fxLayout="column" fxLayoutGap="20px">
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+      <h2>Auth</h2>
+      <div *ngIf="auth.loading">Loading...</div>
+    </div>
+    <div *ngIf="!auth.authenticated" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
+      <h3>Login with single sign-on</h3>
+      <button (click)="login()">Login</button>
+    </div>
+    <div *ngIf="!auth.authenticated" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
+      <h3>Login with e-mail or username and password</h3>
+      <div fxLayout="row" fxLayoutGap="10px">
+        <input
+          [(ngModel)]="emailOrUsernamePasswordCredentials.emailOrUsername"
+          type="text"
+          name="emailOrUsername"
+          id="emailOrUsername"
+          placeholder="E-mail or username"
+        />
+        <input [(ngModel)]="emailOrUsernamePasswordCredentials.password" type="password" name="password" id="password" placeholder="Password" />
+      </div>
+      <button (click)="loginWithEmailOrUsernamePassword()">Login</button>
+    </div>
+    <div *ngIf="!auth.authenticated" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
+      <h3>Login with client ID and scret</h3>
+      <div fxLayout="row" fxLayoutGap="10px">
+        <input [(ngModel)]="clientIdClientSecretCredentials.clientId" type="text" name="clientId" id="clientId" placeholder="Client ID" />
+        <input
+          [(ngModel)]="clientIdClientSecretCredentials.clientSecret"
+          type="password"
+          name="clientSecret"
+          id="clientSecret"
+          placeholder="Client Secret"
+        />
+      </div>
+      <button (click)="loginWithClientIdClientSecret()">Login</button>
+    </div>
+    <div *ngIf="auth.authenticated" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
+      <h3>Logout</h3>
+      <button (click)="logout()">Logout</button>
+    </div>
+    <div *ngIf="auth.error" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
+      <div>Message: {{ auth.error.message }}</div>
+      <div>Error: {{ auth.error.error.error }}</div>
+    </div>
+    <div *ngIf="auth.authenticated">
+      <h3>Authenticated! Token:</h3>
+      <div>
+        {{ auth.token }}
+      </div>
+    </div>
   </div>
-  <button (click)="loginWithEmailOrUsernamePassword()">Login</button>
-</div>
-
-<div>
-  <h3>Login with client ID and scret</h3>
-  <div>
-    <input [(ngModel)]="clientIdClientSecretCredentials.clientId" type="text" name="clientId" id="clientId" placeholder="Client ID" />
-    <input
-      [(ngModel)]="clientIdClientSecretCredentials.clientSecret"
-      type="password"
-      name="clientSecret"
-      id="clientSecret"
-      placeholder="Client Secret"
-    />
-  </div>
-  <button (click)="loginWithClientIdClientSecret()">Login</button>
-</div>
-
-<p *ngIf="(auth$ | async)?.error">
-  {{ (auth$ | async)?.error?.message }}
-</p>
-
-<div *ngIf="(auth$ | async)?.authenticated">
-  <h3>Authenticated! Token:</h3>
-  <div>
-    {{ (auth$ | async)?.token }}
-  </div>
-</div>
-
-<br />
-<br />
-
-<div *ngIf="auth$ | async as auth">
-  <strong>auth$ | async as auth</strong>
-  {{ auth | json }}
-</div>
+</ng-container>

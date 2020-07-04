@@ -28,3 +28,5 @@ export const loginWithEmailOrUsernamePasswordFailure = createAction('[Auth] Logi
 export const loginWithClientIdClientSecret = createAction('[Auth] Login client/secret', props<ClientIdClientSecretCredentialsDto>());
 export const loginWithClientIdClientSecretSuccess = createAction('[Auth] Login client/secret Success', props<AuthenticatedDto>());
 export const loginWithClientIdClientSecretFailure = createAction('[Auth] Login client/secret Failure', props<any>());
+
+export const logout = createAction('[Auth] Logout');
