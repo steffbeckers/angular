@@ -1,1 +1,14 @@
-<p>auth works!</p>
+<h2>Authentication</h2>
+
+<button id="login" (click)="login()">Login</button>
+
+<p *ngIf="(auth$ | async)?.error">
+  {{ (auth$ | async)?.error?.message }}
+</p>
+
+<div *ngIf="(auth$ | async)?.authenticated">
+  <h3>Authenticated! Token:</h3>
+  <div>
+    {{ (auth$ | async)?.token }}
+  </div>
+</div>

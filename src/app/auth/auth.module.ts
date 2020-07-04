@@ -4,14 +4,17 @@ import { CommonModule } from '@angular/common';
 // NgRx
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import * as fromAuth from './store/reducers/auth.reducer';
-import { AuthEffects } from './store/effects/auth.effects';
+import * as fromAuth from 'src/app/auth/store/reducers/auth.reducer';
+import { AuthEffects } from 'src/app/auth/store/effects/auth.effects';
 
 // Modules
-import { AuthRoutingModule } from './auth-routing.module';
+import { AuthRoutingModule } from 'src/app/auth/auth-routing.module';
+
+// Services
+import { AuthService } from 'src/app/auth/auth.service';
 
 // Components
-import { AuthComponent } from './auth.component';
+import { AuthComponent } from 'src/app/auth/auth.component';
 
 @NgModule({
   declarations: [AuthComponent],
@@ -21,5 +24,6 @@ import { AuthComponent } from './auth.component';
     StoreModule.forFeature(fromAuth.authFeatureKey, fromAuth.reducer),
     EffectsModule.forFeature([AuthEffects]),
   ],
+  providers: [AuthService],
 })
 export class AuthModule {}

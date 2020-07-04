@@ -17,17 +17,15 @@ import { selectCountValue, selectCountChanged } from './store/selectors/counter.
 export class CounterComponent implements OnInit {
   public value$: Observable<number>;
   public changed$: Observable<number>;
-  public counter$: Subject<fromCounter.State> = new Subject<fromCounter.State>();
+  // public counter$: Subject<fromCounter.State> = new Subject<fromCounter.State>();
 
   constructor(private store: Store<fromCounter.State>) {
-    // this.value$ = store.select((state) => state.value); // Without selector
-    this.value$ = store.select(selectCountValue); // With selector
-    // this.changed$ = store.select(state => state.changed); // Without selector
-    this.changed$ = store.select(selectCountChanged); // With selector
+    this.value$ = store.select(selectCountValue);
+    this.changed$ = store.select(selectCountChanged);
 
-    store.subscribe((counter) => {
-      this.counter$.next(counter);
-    });
+    // store.subscribe((counter) => {
+    //   this.counter$.next(counter);
+    // });
   }
 
   ngOnInit(): void {}

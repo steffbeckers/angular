@@ -1,7 +1,7 @@
 import * as fromCounter from './counter.actions';
 
-describe('loadCounters', () => {
+describe('increment', () => {
   it('should return an action', () => {
-    expect(fromCounter.loadCounters().type).toBe('[Counter] Load Counters');
+    expect(fromCounter.increment().type).toBe('[Counter] Increment');
   });
 });

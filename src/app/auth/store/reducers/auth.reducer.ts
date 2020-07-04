@@ -3,13 +3,42 @@ import * as AuthActions from '../actions/auth.actions';
 
 export const authFeatureKey = 'auth';
 
-export interface State {}
+export interface State {
+  loading: boolean;
+  error: any;
+  authenticated: boolean;
+  token: string;
+}
 
-export const initialState: State = {};
+export const initialState: State = {
+  loading: false,
+  error: null,
+  authenticated: false,
+  token: null,
+};
 
 export const reducer = createReducer(
   initialState,
-  on(AuthActions.login, (state) => state),
-  on(AuthActions.loginSuccess, (state) => state),
-  on(AuthActions.loginFailure, (state) => state)
+  on(AuthActions.login, (state) => {
+    return {
+      ...state,
+      loading: true,
+    };
+  }),
+  on(AuthActions.loginSuccess, (state, authenticated) => {
+    return {
+      ...state,
+      loading: false,
+      error: null,
+      authenticated: true,
+      token: authenticated.access_token,
+    };
+  }),
+  on(AuthActions.loginFailure, (state, error) => {
+    return {
+      ...state,
+      loading: false,
+      error,
+    };
+  })
 );

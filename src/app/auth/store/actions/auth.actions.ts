@@ -1,18 +1,19 @@
 import { createAction, props } from '@ngrx/store';
-import { User } from '../../models/user.model';
 
-export interface Credentials {
-  emailOrUsername: string;
-  password: string;
-  rememberMe: boolean;
+// export interface CredentialsDto {
+//   emailOrUsername: string;
+//   password: string;
+//   rememberMe: boolean;
+// }
+
+export interface AuthenticatedDto {
+  access_token: string;
+  expires_in: string;
+  token_type: string;
+  scope: string;
 }
 
-export interface Authenticated {
-  user: User;
-  token: string;
-  rememberMe: boolean;
-}
-
-export const login = createAction('[Auth] Login', props<Credentials>());
-export const loginSuccess = createAction('[Auth] Login Success', props<Authenticated>());
-export const loginFailure = createAction('[Auth] Login Failure', props<{ error: any }>());
+// export const login = createAction('[Auth] Login', props<CredentialsDto>());
+export const login = createAction('[Auth] Login');
+export const loginSuccess = createAction('[Auth] Login Success', props<AuthenticatedDto>());
+export const loginFailure = createAction('[Auth] Login Failure', props<any>());
