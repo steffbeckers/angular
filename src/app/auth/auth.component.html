@@ -46,7 +46,10 @@
     <div *ngIf="auth.authenticated" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
       <h3>Hi! You're successfully authenticated.</h3>
       <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="5px">
-        <div>Token</div>
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+          <div>Token</div>
+          <button [cdkCopyToClipboard]="auth.token">Copy</button>
+        </div>
         <div class="token">{{ auth.token }}</div>
       </div>
     </div>
