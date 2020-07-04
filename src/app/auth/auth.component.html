@@ -1,6 +1,39 @@
-<h2>Authentication</h2>
+<h2>Auth</h2>
 
-<button id="login" (click)="login()">Login</button>
+<div>
+  <h3>Login with single sign-on</h3>
+  <button (click)="login()">Login</button>
+</div>
+
+<div>
+  <h3>Login with e-mail or username and password</h3>
+  <div>
+    <input
+      [(ngModel)]="emailOrUsernamePasswordCredentials.emailOrUsername"
+      type="text"
+      name="emailOrUsername"
+      id="emailOrUsername"
+      placeholder="E-mail or username"
+    />
+    <input [(ngModel)]="emailOrUsernamePasswordCredentials.password" type="password" name="password" id="password" placeholder="Password" />
+  </div>
+  <button (click)="loginWithEmailOrUsernamePassword()">Login</button>
+</div>
+
+<div>
+  <h3>Login with client ID and scret</h3>
+  <div>
+    <input [(ngModel)]="clientIdClientSecretCredentials.clientId" type="text" name="clientId" id="clientId" placeholder="Client ID" />
+    <input
+      [(ngModel)]="clientIdClientSecretCredentials.clientSecret"
+      type="password"
+      name="clientSecret"
+      id="clientSecret"
+      placeholder="Client Secret"
+    />
+  </div>
+  <button (click)="loginWithClientIdClientSecret()">Login</button>
+</div>
 
 <p *ngIf="(auth$ | async)?.error">
   {{ (auth$ | async)?.error?.message }}
@@ -16,7 +49,7 @@
 <br />
 <br />
 
-<strong>auth$ | async as auth</strong>
 <div *ngIf="auth$ | async as auth">
+  <strong>auth$ | async as auth</strong>
   {{ auth | json }}
 </div>

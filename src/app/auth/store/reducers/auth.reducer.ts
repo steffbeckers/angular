@@ -40,5 +40,49 @@ export const reducer = createReducer(
       loading: false,
       error,
     };
+  }),
+  on(AuthActions.loginWithEmailOrUsernamePassword, (state) => {
+    return {
+      ...state,
+      loading: true,
+    };
+  }),
+  on(AuthActions.loginWithEmailOrUsernamePasswordSuccess, (state, authenticated) => {
+    return {
+      ...state,
+      loading: false,
+      error: null,
+      authenticated: true,
+      token: authenticated.access_token,
+    };
+  }),
+  on(AuthActions.loginWithEmailOrUsernamePasswordFailure, (state, error) => {
+    return {
+      ...state,
+      loading: false,
+      error,
+    };
+  }),
+  on(AuthActions.loginWithClientIdClientSecret, (state) => {
+    return {
+      ...state,
+      loading: true,
+    };
+  }),
+  on(AuthActions.loginWithClientIdClientSecretSuccess, (state, authenticated) => {
+    return {
+      ...state,
+      loading: false,
+      error: null,
+      authenticated: true,
+      token: authenticated.access_token,
+    };
+  }),
+  on(AuthActions.loginWithClientIdClientSecretFailure, (state, error) => {
+    return {
+      ...state,
+      loading: false,
+      error,
+    };
   })
 );
