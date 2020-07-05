@@ -4,7 +4,7 @@ import { selectThemeState } from './theme.selectors';
 describe('Theme Selectors', () => {
   it('should select the feature state', () => {
     const result = selectThemeState({
-      [fromTheme.themeFeatureKey]: {}
+      [fromTheme.themeFeatureKey]: {},
     });
 
     expect(result).toEqual({});

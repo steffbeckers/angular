@@ -49,15 +49,18 @@ export const reducer = createReducer(
       error: null,
     };
   }),
-  on(AuthActions.loginWithEmailOrUsernamePasswordSuccess, (state, authenticated) => {
-    return {
-      ...state,
-      loading: false,
-      error: null,
-      authenticated: true,
-      token: authenticated.access_token,
-    };
-  }),
+  on(
+    AuthActions.loginWithEmailOrUsernamePasswordSuccess,
+    (state, authenticated) => {
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        authenticated: true,
+        token: authenticated.access_token,
+      };
+    }
+  ),
   on(AuthActions.loginWithEmailOrUsernamePasswordFailure, (state, error) => {
     return {
       ...state,
@@ -72,15 +75,18 @@ export const reducer = createReducer(
       error: null,
     };
   }),
-  on(AuthActions.loginWithClientIdClientSecretSuccess, (state, authenticated) => {
-    return {
-      ...state,
-      loading: false,
-      error: null,
-      authenticated: true,
-      token: authenticated.access_token,
-    };
-  }),
+  on(
+    AuthActions.loginWithClientIdClientSecretSuccess,
+    (state, authenticated) => {
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        authenticated: true,
+        token: authenticated.access_token,
+      };
+    }
+  ),
   on(AuthActions.loginWithClientIdClientSecretFailure, (state, error) => {
     return {
       ...state,

@@ -17,7 +17,11 @@ export class AppEffects {
   });
 
   online$ = createEffect((): any => {
-    return merge(of(navigator.onLine), fromEvent(window, 'online').pipe(mapTo(true)), fromEvent(window, 'offline').pipe(mapTo(false))).pipe(
+    return merge(
+      of(navigator.onLine),
+      fromEvent(window, 'online').pipe(mapTo(true)),
+      fromEvent(window, 'offline').pipe(mapTo(false))
+    ).pipe(
       map((online) => {
         // TODO: Add app action and reducer to store online state
         return online ? CounterActions.increment() : CounterActions.decrement();

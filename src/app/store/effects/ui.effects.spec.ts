@@ -10,10 +10,7 @@ describe('UIEffects', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        UIEffects,
-        provideMockActions(() => actions$)
-      ]
+      providers: [UIEffects, provideMockActions(() => actions$)],
     });
 
     effects = TestBed.inject(UIEffects);

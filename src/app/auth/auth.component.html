@@ -4,11 +4,21 @@
       <h2>Auth</h2>
       <div *ngIf="auth.loading">Loading...</div>
     </div>
-    <div *ngIf="!auth.authenticated" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
+    <div
+      *ngIf="!auth.authenticated"
+      fxLayout="column"
+      fxLayoutAlign="start start"
+      fxLayoutGap="10px"
+    >
       <h3>Login with single sign-on</h3>
       <button (click)="login()">Login</button>
     </div>
-    <div *ngIf="!auth.authenticated" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
+    <div
+      *ngIf="!auth.authenticated"
+      fxLayout="column"
+      fxLayoutAlign="start start"
+      fxLayoutGap="10px"
+    >
       <h3>Login with e-mail or username and password</h3>
       <div fxLayout="row" fxLayoutGap="10px">
         <input
@@ -18,14 +28,31 @@
           id="emailOrUsername"
           placeholder="E-mail or username"
         />
-        <input [(ngModel)]="emailOrUsernamePasswordCredentials.password" type="password" name="password" id="password" placeholder="Password" />
+        <input
+          [(ngModel)]="emailOrUsernamePasswordCredentials.password"
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+        />
       </div>
       <button (click)="loginWithEmailOrUsernamePassword()">Login</button>
     </div>
-    <div *ngIf="!auth.authenticated" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
+    <div
+      *ngIf="!auth.authenticated"
+      fxLayout="column"
+      fxLayoutAlign="start start"
+      fxLayoutGap="10px"
+    >
       <h3>Login with client ID and scret</h3>
       <div fxLayout="row" fxLayoutGap="10px">
-        <input [(ngModel)]="clientIdClientSecretCredentials.clientId" type="text" name="clientId" id="clientId" placeholder="Client ID" />
+        <input
+          [(ngModel)]="clientIdClientSecretCredentials.clientId"
+          type="text"
+          name="clientId"
+          id="clientId"
+          placeholder="Client ID"
+        />
         <input
           [(ngModel)]="clientIdClientSecretCredentials.clientSecret"
           type="password"
@@ -36,14 +63,29 @@
       </div>
       <button (click)="loginWithClientIdClientSecret()">Login</button>
     </div>
-    <div *ngIf="auth.authenticated" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
+    <div
+      *ngIf="auth.authenticated"
+      fxLayout="column"
+      fxLayoutAlign="start start"
+      fxLayoutGap="10px"
+    >
       <button (click)="logout()">Logout</button>
     </div>
-    <div *ngIf="auth.error" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
+    <div
+      *ngIf="auth.error"
+      fxLayout="column"
+      fxLayoutAlign="start start"
+      fxLayoutGap="10px"
+    >
       <div>Message: {{ auth.error.message }}</div>
       <div>Error: {{ auth.error.error.error }}</div>
     </div>
-    <div *ngIf="auth.authenticated" fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10px">
+    <div
+      *ngIf="auth.authenticated"
+      fxLayout="column"
+      fxLayoutAlign="start start"
+      fxLayoutGap="10px"
+    >
       <h3>Hi! You're successfully authenticated.</h3>
       <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="5px">
         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">

@@ -22,6 +22,8 @@ export class SettingsComponent implements OnInit {
   ngOnInit(): void {}
 
   selectTheme(): void {
-    this.store.dispatch(ThemeActions.selectTheme({ selectedTheme: this.selectedTheme }));
+    this.store.dispatch(
+      ThemeActions.selectTheme({ selectedTheme: this.selectedTheme })
+    );
   }
 }

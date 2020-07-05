@@ -1,4 +1,10 @@
-import { ActionReducer, ActionReducerMap, createFeatureSelector, createSelector, MetaReducer } from '@ngrx/store';
+import {
+  ActionReducer,
+  ActionReducerMap,
+  createFeatureSelector,
+  createSelector,
+  MetaReducer,
+} from '@ngrx/store';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { environment } from '../../environments/environment';
 
@@ -11,8 +17,15 @@ export const reducers: ActionReducerMap<State> = {};
 reducers[fromUI.uiFeatureKey] = fromUI.reducer;
 reducers[fromTheme.themeFeatureKey] = fromTheme.reducer;
 
-export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
-  return localStorageSync({ keys: ['ui', 'theme', 'auth', 'counter'], rehydrate: true })(reducer);
+export function localStorageSyncReducer(
+  reducer: ActionReducer<any>
+): ActionReducer<any> {
+  return localStorageSync({
+    keys: ['ui', 'theme', 'auth', 'counter'],
+    rehydrate: true,
+  })(reducer);
 }
 
-export const metaReducers: MetaReducer<State>[] = !environment.production ? [localStorageSyncReducer] : [localStorageSyncReducer];
+export const metaReducers: MetaReducer<State>[] = !environment.production
+  ? [localStorageSyncReducer]
+  : [localStorageSyncReducer];

@@ -12,11 +12,13 @@ import * as TodosActions from '../actions/todos.actions';
 export class TodosEffects {
   constructor(private actions$: Actions) {}
 
-  loadTodoss$ = createEffect((): any => {
-    return this.actions$.pipe(
-      ofType(TodosActions.loadTodos),
-      /** An EMPTY observable only emits completion. Replace with your own observable API request */
-      concatMap(() => EMPTY)
-    );
-  });
+  loadTodoss$ = createEffect(
+    (): any => {
+      return this.actions$.pipe(
+        ofType(TodosActions.loadTodos),
+        /** An EMPTY observable only emits completion. Replace with your own observable API request */
+        concatMap(() => EMPTY)
+      );
+    }
+  );
 }

@@ -10,10 +10,7 @@ describe('ThemeEffects', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        ThemeEffects,
-        provideMockActions(() => actions$)
-      ]
+      providers: [ThemeEffects, provideMockActions(() => actions$)],
     });
 
     effects = TestBed.inject(ThemeEffects);

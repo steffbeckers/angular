@@ -10,7 +10,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "e2e.live": "ng e2e --devServerTarget='' --baseUrl='https://angular.steffbeckers.eu'",
-    "prettier": "prettier --write \"**/*.ts\"; prettier --write \"**/*.html\"; prettier --write \"**/*.scss\""
+    "prettier": "npm run prettier-ts && npm run prettier-html && npm run prettier-scss",
+    "prettier-ts": "prettier --write \"**/*.ts\"",
+    "prettier-html": "prettier --write \"**/*.html\"",
+    "prettier-scss": "prettier --write \"**/*.scss\""
   },
   "private": true,
   "dependencies": {

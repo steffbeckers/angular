@@ -18,15 +18,36 @@ export interface AuthenticatedDto {
 }
 
 export const login = createAction('[Auth] Login');
-export const loginSuccess = createAction('[Auth] Login Success', props<AuthenticatedDto>());
+export const loginSuccess = createAction(
+  '[Auth] Login Success',
+  props<AuthenticatedDto>()
+);
 export const loginFailure = createAction('[Auth] Login Failure', props<any>());
 
-export const loginWithEmailOrUsernamePassword = createAction('[Auth] Login password', props<EmailOrUsernamePasswordCredentialsDto>());
-export const loginWithEmailOrUsernamePasswordSuccess = createAction('[Auth] Login password Success', props<AuthenticatedDto>());
-export const loginWithEmailOrUsernamePasswordFailure = createAction('[Auth] Login password Failure', props<any>());
+export const loginWithEmailOrUsernamePassword = createAction(
+  '[Auth] Login password',
+  props<EmailOrUsernamePasswordCredentialsDto>()
+);
+export const loginWithEmailOrUsernamePasswordSuccess = createAction(
+  '[Auth] Login password Success',
+  props<AuthenticatedDto>()
+);
+export const loginWithEmailOrUsernamePasswordFailure = createAction(
+  '[Auth] Login password Failure',
+  props<any>()
+);
 
-export const loginWithClientIdClientSecret = createAction('[Auth] Login client/secret', props<ClientIdClientSecretCredentialsDto>());
-export const loginWithClientIdClientSecretSuccess = createAction('[Auth] Login client/secret Success', props<AuthenticatedDto>());
-export const loginWithClientIdClientSecretFailure = createAction('[Auth] Login client/secret Failure', props<any>());
+export const loginWithClientIdClientSecret = createAction(
+  '[Auth] Login client/secret',
+  props<ClientIdClientSecretCredentialsDto>()
+);
+export const loginWithClientIdClientSecretSuccess = createAction(
+  '[Auth] Login client/secret Success',
+  props<AuthenticatedDto>()
+);
+export const loginWithClientIdClientSecretFailure = createAction(
+  '[Auth] Login client/secret Failure',
+  props<any>()
+);
 
 export const logout = createAction('[Auth] Logout');

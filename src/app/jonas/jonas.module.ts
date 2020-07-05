@@ -8,14 +8,13 @@ import * as fromJonas from './store/reducers/jonas.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { JonasEffects } from './store/effects/jonas.effects';
 
-
 @NgModule({
   declarations: [JonasComponent],
   imports: [
     CommonModule,
     JonasRoutingModule,
     StoreModule.forFeature(fromJonas.jonasFeatureKey, fromJonas.reducer),
-    EffectsModule.forFeature([JonasEffects])
-  ]
+    EffectsModule.forFeature([JonasEffects]),
+  ],
 })
-export class JonasModule { }
+export class JonasModule {}

@@ -6,8 +6,15 @@ import { Observable, Subject } from 'rxjs';
 // NgRx
 import { Store } from '@ngrx/store';
 import * as fromCounter from 'src/app/counter/store/reducers/counter.reducer';
-import { increment, decrement, reset } from 'src/app/counter/store/actions/counter.actions';
-import { selectCountValue, selectCountChanged } from './store/selectors/counter.selectors';
+import {
+  increment,
+  decrement,
+  reset,
+} from 'src/app/counter/store/actions/counter.actions';
+import {
+  selectCountValue,
+  selectCountChanged,
+} from './store/selectors/counter.selectors';
 
 @Component({
   selector: 'app-counter',

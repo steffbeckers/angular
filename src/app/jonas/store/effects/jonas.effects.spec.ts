@@ -10,10 +10,7 @@ describe('JonasEffects', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        JonasEffects,
-        provideMockActions(() => actions$)
-      ]
+      providers: [JonasEffects, provideMockActions(() => actions$)],
     });
 
     effects = TestBed.inject(JonasEffects);

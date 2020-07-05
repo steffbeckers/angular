@@ -7,6 +7,6 @@ const routes: Routes = [{ path: '', component: CounterComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class CounterRoutingModule { }
+export class CounterRoutingModule {}

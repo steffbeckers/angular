@@ -7,6 +7,6 @@ const routes: Routes = [{ path: '', component: JonasComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class JonasRoutingModule { }
+export class JonasRoutingModule {}

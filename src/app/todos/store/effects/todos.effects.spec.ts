@@ -10,10 +10,7 @@ describe('TodosEffects', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        TodosEffects,
-        provideMockActions(() => actions$)
-      ]
+      providers: [TodosEffects, provideMockActions(() => actions$)],
     });
 
     effects = TestBed.inject(TodosEffects);

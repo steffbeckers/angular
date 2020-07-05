@@ -10,10 +10,7 @@ describe('AdminEffects', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        AdminEffects,
-        provideMockActions(() => actions$)
-      ]
+      providers: [AdminEffects, provideMockActions(() => actions$)],
     });
 
     effects = TestBed.inject(AdminEffects);

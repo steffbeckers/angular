@@ -4,7 +4,7 @@ import { selectJonasState } from './jonas.selectors';
 describe('Jonas Selectors', () => {
   it('should select the feature state', () => {
     const result = selectJonasState({
-      [fromJonas.jonasFeatureKey]: {}
+      [fromJonas.jonasFeatureKey]: {},
     });
 
     expect(result).toEqual({});
