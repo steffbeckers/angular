@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 // NgRx
 import { StoreModule } from '@ngrx/store';
@@ -21,7 +23,9 @@ import { TodosComponent } from './todos.component';
   declarations: [TodosComponent],
   imports: [
     CommonModule,
+    FormsModule,
     HttpClientModule,
+    FlexLayoutModule,
     TodosRoutingModule,
     StoreModule.forFeature(fromTodos.todosFeatureKey, fromTodos.reducer),
     EffectsModule.forFeature([TodosEffects]),

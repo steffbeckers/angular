@@ -29,7 +29,7 @@ export const reducer = createReducer(
     };
   }),
   on(TodosActions.loadTodosSuccess, (state, { items }) => {
-    return adapter.addMany(
+    return adapter.upsertMany(
       items.map((item) => {
         return {
           ...item,
