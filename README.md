@@ -28,6 +28,12 @@ Ran commands for NgRx and modules
 
 `ng generate feature store/UI --module app.module.ts --group`
 
+`ng generate module todos --route todos --module app.module.ts`
+
+`ng generate feature todos/store/Todos --module todos/todos.module.ts --group`
+
+`ng generate effect store/App --module app.module.ts --group`
+
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
