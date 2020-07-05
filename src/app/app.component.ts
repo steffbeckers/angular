@@ -1,10 +1,23 @@
 import { Component } from '@angular/core';
 
+// NgRx
+import { Store } from '@ngrx/store';
+import * as fromApp from 'src/app/store';
+import * as UIActions from 'src/app/store/actions/ui.actions';
+import { selectUIState } from 'src/app/store/selectors/ui.selectors';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'angular';
+  ui$ = this.store.select(selectUIState);
+  title = 'Angular';
+
+  constructor(private store: Store<fromApp.State>) {}
+
+  toggleAppTitle(): void {
+    this.store.dispatch(UIActions.toggleAppTitle());
+  }
 }

@@ -3,7 +3,13 @@
   <div fxLayout="row" fxLayoutAlign="center start">
     <div fxFlex="0 0 calc(100% - 40px)" fxLayout="column" fxLayoutGap="10px">
       <div fxLayout="column" fxLayoutGap="20px">
-        <h1>Angular</h1>
+        <ng-container *ngIf="ui$ | async as ui">
+          <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="5px">
+            <span *ngIf="ui.showAppTitle" (click)="toggleAppTitle()">Hide title</span>
+            <span *ngIf="!ui.showAppTitle" (click)="toggleAppTitle()">Show title</span>
+            <h1 *ngIf="ui.showAppTitle">{{ title }}</h1>
+          </div>
+        </ng-container>
         <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px">
           <button routerLink="">Home</button>
           <button routerLink="/auth">Auth</button>

@@ -9,7 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers, metaReducers } from './store';
-import { AppEffects } from './store/effects/app.effects';
+import { UIEffects } from './store/effects/ui.effects';
 
 // Modules
 import { AppRoutingModule } from './app-routing.module';
@@ -31,7 +31,7 @@ import { AppComponent } from './app.component';
         strictActionImmutability: true,
       },
     }),
-    EffectsModule.forRoot([AppEffects]),
+    EffectsModule.forRoot([UIEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [],
