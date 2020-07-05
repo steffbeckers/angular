@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+// NgRx
+import { StoreModule } from '@ngrx/store';
+import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
+
 const routes: Routes = [
   {
     path: 'auth',
@@ -30,7 +34,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    StoreModule.forRoot({
+      router: routerReducer,
+    }),
+    RouterModule.forRoot(routes),
+    StoreRouterConnectingModule.forRoot(),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

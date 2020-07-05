@@ -8,14 +8,21 @@ import {
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { environment } from '../../environments/environment';
 
+import * as fromRouter from '@ngrx/router-store';
 import * as fromUI from '../store/reducers/ui.reducer';
 import * as fromTheme from '../store/reducers/theme.reducer';
 
-export interface State {}
+export interface State {
+  router: fromRouter.RouterReducerState<any>;
+  [fromUI.uiFeatureKey]: fromUI.State;
+  [fromTheme.themeFeatureKey]: fromTheme.State;
+}
 
-export const reducers: ActionReducerMap<State> = {};
-reducers[fromUI.uiFeatureKey] = fromUI.reducer;
-reducers[fromTheme.themeFeatureKey] = fromTheme.reducer;
+export const reducers: ActionReducerMap<State> = {
+  router: fromRouter.routerReducer,
+  [fromUI.uiFeatureKey]: fromUI.reducer,
+  [fromTheme.themeFeatureKey]: fromTheme.reducer,
+};
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<any>

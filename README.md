@@ -34,6 +34,8 @@ Ran commands for NgRx and modules
 
 `ng generate effect store/App --module app.module.ts --group`
 
+`npm install @ngrx/router-store`
+
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
