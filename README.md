@@ -36,6 +36,8 @@ Ran commands for NgRx and modules
 
 `npm install @ngrx/router-store`
 
+`npm install @ngrx/entity`
+
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.

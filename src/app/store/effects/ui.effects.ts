@@ -10,12 +10,10 @@ import * as CounterActions from 'src/app/counter/store/actions/counter.actions';
 export class UIEffects {
   constructor(private actions$: Actions) {}
 
-  toggleAppTitle$ = createEffect(
-    (): any => {
-      return this.actions$.pipe(
-        ofType(UIActions.toggleAppTitle),
-        concatMap(() => [CounterActions.decrement()])
-      );
-    }
+  toggleAppTitle$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(UIActions.toggleAppTitle),
+      concatMap(() => [CounterActions.decrement()])
+    )
   );
 }

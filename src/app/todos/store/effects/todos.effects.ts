@@ -1,24 +1,29 @@
 import { Injectable } from '@angular/core';
 
 // RxJS
-import { concatMap } from 'rxjs/operators';
-import { EMPTY } from 'rxjs';
+import { of } from 'rxjs';
+import { map, switchMap, catchError } from 'rxjs/operators';
 
 // NgRx
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as TodosActions from '../actions/todos.actions';
+import { TodosService } from '../../todos-service.service';
 
 @Injectable()
 export class TodosEffects {
-  constructor(private actions$: Actions) {}
+  constructor(private actions$: Actions, private todosService: TodosService) {}
 
-  loadTodoss$ = createEffect(
-    (): any => {
-      return this.actions$.pipe(
-        ofType(TodosActions.loadTodos),
-        /** An EMPTY observable only emits completion. Replace with your own observable API request */
-        concatMap(() => EMPTY)
-      );
-    }
+  loadTodos$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(TodosActions.loadTodos),
+      switchMap(() =>
+        this.todosService.loadTodos().pipe(
+          map((queryTodos: TodosActions.QueryTodosDto) =>
+            TodosActions.loadTodosSuccess(queryTodos)
+          ),
+          catchError((error) => of(TodosActions.loadTodosFailure(error)))
+        )
+      )
+    )
   );
 }

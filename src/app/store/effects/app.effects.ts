@@ -12,12 +12,12 @@ import * as CounterActions from 'src/app/counter/store/actions/counter.actions';
 export class AppEffects {
   constructor(private actions$: Actions) {}
 
-  every5Seconds$ = createEffect((): any => {
-    return interval(5000).pipe(mapTo(CounterActions.increment()));
-  });
+  every5Seconds$ = createEffect(() =>
+    interval(5000).pipe(mapTo(CounterActions.increment()))
+  );
 
-  online$ = createEffect((): any => {
-    return merge(
+  online$ = createEffect(() =>
+    merge(
       of(navigator.onLine),
       fromEvent(window, 'online').pipe(mapTo(true)),
       fromEvent(window, 'offline').pipe(mapTo(false))
@@ -26,6 +26,6 @@ export class AppEffects {
         // TODO: Add app action and reducer to store online state
         return online ? CounterActions.increment() : CounterActions.decrement();
       })
-    );
-  });
+    )
+  );
 }

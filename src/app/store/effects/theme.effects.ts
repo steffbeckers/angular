@@ -10,13 +10,7 @@ import * as ThemeActions from '../actions/theme.actions';
 export class ThemeEffects {
   constructor(private actions$: Actions) {}
 
-  loadThemes$ = createEffect(
-    (): any => {
-      return this.actions$.pipe(
-        ofType(ThemeActions.selectTheme),
-        /** An EMPTY observable only emits completion. Replace with your own observable API request */
-        concatMap(() => EMPTY)
-      );
-    }
+  loadThemes$ = createEffect(() =>
+    this.actions$.pipe(ofType(ThemeActions.selectTheme))
   );
 }

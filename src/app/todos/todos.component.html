@@ -1,1 +1,7 @@
-<p>todos works!</p>
+<ng-container *ngIf="todos$ | async as todosState">
+  <h2>Todos</h2>
+  <div *ngIf="todosState.loading">Loading...</div>
+  <ul>
+    <li *ngFor="let todo of todoItems$ | async">{{ todo.title }}</li>
+  </ul>
+</ng-container>
