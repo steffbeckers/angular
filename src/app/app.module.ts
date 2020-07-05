@@ -34,7 +34,9 @@ import { AppComponent } from './app.component';
       },
     }),
     EffectsModule.forRoot([AppEffects, UIEffects, ThemeEffects]),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    StoreDevtoolsModule.instrument(),
+    // TODO: Disable Redux dev tools in production
+    // !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [],
   bootstrap: [AppComponent],

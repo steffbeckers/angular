@@ -4,7 +4,9 @@
       <h2>Todos</h2>
       <div *ngIf="todosState.loading">Loading...</div>
     </div>
+    <div *ngIf="todosState.error">Message: {{ todosState.error.message }}</div>
     <div
+      *ngIf="todosState.entities"
       class="todos"
       fxLayout="column"
       fxLayoutAlign="start start"

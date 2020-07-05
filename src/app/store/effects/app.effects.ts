@@ -12,7 +12,7 @@ import * as CounterActions from 'src/app/counter/store/actions/counter.actions';
 export class AppEffects {
   constructor(private actions$: Actions) {}
 
-  every5Seconds$ = createEffect(() =>
+  incrementCounterEvery5Seconds$ = createEffect(() =>
     interval(5000).pipe(mapTo(CounterActions.increment()))
   );
 

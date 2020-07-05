@@ -1,5 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+
 import * as TodosActions from '../actions/todos.actions';
 
 export const todosFeatureKey = 'todos';
@@ -7,6 +8,7 @@ export const todosFeatureKey = 'todos';
 export interface State extends EntityState<TodosActions.Todo> {
   // additional state property
   loading: boolean;
+  error: any;
   selectedTodoId: string;
 }
 
@@ -17,6 +19,7 @@ export const adapter: EntityAdapter<TodosActions.Todo> = createEntityAdapter<
 export const initialState: State = adapter.getInitialState({
   // additional entity state properties
   loading: false,
+  error: null,
   selectedTodoId: null,
 });
 
@@ -26,6 +29,7 @@ export const reducer = createReducer(
     return {
       ...state,
       loading: true,
+      error: null,
     };
   }),
   on(TodosActions.loadTodosSuccess, (state, { items }) => {
@@ -45,5 +49,13 @@ export const reducer = createReducer(
         selectedTodoId: items[0].id,
       }
     );
+  }),
+  on(TodosActions.loadTodosFailure, (state, error) => {
+    state = adapter.removeAll(state);
+    return {
+      ...state,
+      loading: false,
+      error,
+    };
   })
 );
