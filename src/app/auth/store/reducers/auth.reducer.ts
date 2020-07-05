@@ -23,6 +23,7 @@ export const reducer = createReducer(
     return {
       ...state,
       loading: true,
+      error: null,
     };
   }),
   on(AuthActions.loginSuccess, (state, authenticated) => {
@@ -45,6 +46,7 @@ export const reducer = createReducer(
     return {
       ...state,
       loading: true,
+      error: null,
     };
   }),
   on(AuthActions.loginWithEmailOrUsernamePasswordSuccess, (state, authenticated) => {
@@ -67,6 +69,7 @@ export const reducer = createReducer(
     return {
       ...state,
       loading: true,
+      error: null,
     };
   }),
   on(AuthActions.loginWithClientIdClientSecretSuccess, (state, authenticated) => {
