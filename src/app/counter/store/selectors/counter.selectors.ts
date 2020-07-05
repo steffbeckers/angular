@@ -8,6 +8,7 @@ export const selectCounterState = createFeatureSelector<fromCounter.State>(
 // Added these custom selectors
 
 // Router
+// https://ngrx.io/guide/router-store/selectors
 import * as fromApp from 'src/app/store';
 import * as fromRouter from '@ngrx/router-store';
 export const selectRouter = createFeatureSelector<
