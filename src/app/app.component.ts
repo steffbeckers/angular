@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromApp from 'src/app/store';
 import * as UIActions from 'src/app/store/actions/ui.actions';
+import { selectThemeState } from 'src/app/store/selectors/theme.selectors';
 import { selectUIState } from 'src/app/store/selectors/ui.selectors';
 
 @Component({
@@ -12,6 +13,7 @@ import { selectUIState } from 'src/app/store/selectors/ui.selectors';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  theme$ = this.store.select(selectThemeState);
   ui$ = this.store.select(selectUIState);
   title = 'Angular';
 

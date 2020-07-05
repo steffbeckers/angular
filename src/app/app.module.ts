@@ -16,6 +16,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 // Components
 import { AppComponent } from './app.component';
+import * as fromTheme from './store/reducers/theme.reducer';
+import { ThemeEffects } from './store/effects/theme.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,7 +33,7 @@ import { AppComponent } from './app.component';
         strictActionImmutability: true,
       },
     }),
-    EffectsModule.forRoot([UIEffects]),
+    EffectsModule.forRoot([UIEffects, ThemeEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [],
