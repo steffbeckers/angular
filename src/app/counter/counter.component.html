@@ -2,13 +2,15 @@
   Counter
 </h2>
 
+<br />
+
 <div>
   <span>Value: {{ value$ | async }}</span>
   <span *ngIf="multiplier$ | async">
     (times {{ multiplier$ | async }} = {{ multipliedValue$ | async }})</span
   >
 </div>
-<div>Changed: {{ changed$ | async }}</div>
+<div>Times changed: {{ changed$ | async }}</div>
 
 <br />
 
@@ -16,4 +18,10 @@
   <button id="increment" (click)="increment()">Increment</button>
   <button id="decrement" (click)="decrement()">Decrement</button>
   <button id="reset" (click)="reset()">Reset</button>
+</div>
+
+<br />
+
+<div *ngIf="!(multiplier$ | async)">
+  Try adding '?multiply=2' to the query params (/counter?multiply=2)
 </div>
