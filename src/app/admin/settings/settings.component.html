@@ -1,0 +1,8 @@
+<ng-container *ngIf="theme$ | async as theme">
+  <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="5px">
+    <div>Theme</div>
+    <select name="theme" id="theme" [(ngModel)]="selectedTheme" (change)="selectTheme()">
+      <option *ngFor="let availableTheme of theme.availableThemes" [value]="availableTheme">{{ availableTheme }}</option>
+    </select>
+  </div>
+</ng-container>

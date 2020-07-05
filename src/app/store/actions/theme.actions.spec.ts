@@ -1,7 +1,7 @@
 import * as fromTheme from './theme.actions';
 
-describe('loadThemes', () => {
+describe('selectTheme', () => {
   it('should return an action', () => {
-    expect(fromTheme.loadThemes().type).toBe('[Theme] Load Themes');
+    expect(fromTheme.selectTheme({ selectedTheme: 'theme-steff' }).type).toBe('[Theme] Select theme');
   });
 });

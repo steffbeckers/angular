@@ -12,7 +12,7 @@ export class ThemeEffects {
 
   loadThemes$ = createEffect((): any => {
     return this.actions$.pipe(
-      ofType(ThemeActions.loadThemes),
+      ofType(ThemeActions.selectTheme),
       /** An EMPTY observable only emits completion. Replace with your own observable API request */
       concatMap(() => EMPTY)
     );

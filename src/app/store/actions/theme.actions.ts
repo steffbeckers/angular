@@ -1,9 +1,3 @@
 import { createAction, props } from '@ngrx/store';
 
-export const loadThemes = createAction(
-  '[Theme] Load Themes'
-);
-
-
-
-
+export const selectTheme = createAction('[Theme] Select theme', props<{ selectedTheme: string }>());

@@ -12,7 +12,7 @@ reducers[fromUI.uiFeatureKey] = fromUI.reducer;
 reducers[fromTheme.themeFeatureKey] = fromTheme.reducer;
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
-  return localStorageSync({ keys: ['auth', 'counter'], rehydrate: true })(reducer);
+  return localStorageSync({ keys: ['ui', 'theme', 'auth', 'counter'], rehydrate: true })(reducer);
 }
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [localStorageSyncReducer] : [localStorageSyncReducer];

@@ -1,8 +1,15 @@
-<h2>
-  Administration
-</h2>
-
-<button routerLink="/admin">Dashboard</button>
-<button routerLink="/admin/orders">Orders</button>
-
-<router-outlet></router-outlet>
+<div fxLayout="column" fxLayoutGap="20px">
+  <div>
+    <h2>
+      Administration
+    </h2>
+  </div>
+  <div fxLayout="column" fxLayoutGap="10px">
+    <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px">
+      <button routerLink="/admin">Dashboard</button>
+      <button routerLink="/admin/orders">Orders</button>
+      <button routerLink="/admin/settings">Settings</button>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

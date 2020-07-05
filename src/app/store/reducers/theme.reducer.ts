@@ -15,5 +15,10 @@ export const initialState: State = {
 
 export const reducer = createReducer(
   initialState,
-  on(ThemeActions.loadThemes, (state) => state)
+  on(ThemeActions.selectTheme, (state, payload) => {
+    return {
+      ...state,
+      current: payload.selectedTheme,
+    };
+  })
 );
