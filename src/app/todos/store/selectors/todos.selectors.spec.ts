@@ -7,6 +7,12 @@ describe('Todos Selectors', () => {
       [fromTodos.todosFeatureKey]: {},
     });
 
-    expect(result).toEqual({});
+    expect(result).toEqual({
+      loading: false,
+      error: null,
+      ids: null,
+      entities: null,
+      selectedTodoId: null,
+    });
   });
 });

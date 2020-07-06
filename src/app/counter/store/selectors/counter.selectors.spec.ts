@@ -7,6 +7,9 @@ describe('Counter Selectors', () => {
       [fromCounter.counterFeatureKey]: {},
     });
 
-    expect(result).toEqual({});
+    expect(result).toEqual({
+      value: 0,
+      changed: 0,
+    });
   });
 });

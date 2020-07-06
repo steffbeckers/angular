@@ -7,6 +7,9 @@ describe('Theme Selectors', () => {
       [fromTheme.themeFeatureKey]: {},
     });
 
-    expect(result).toEqual({});
+    expect(result).toEqual({
+      availableThemes: ['theme-steff', 'theme-2020'],
+      current: 'theme-steff',
+    });
   });
 });

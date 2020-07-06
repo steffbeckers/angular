@@ -3,6 +3,7 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { Observable } from 'rxjs';
 
 import { TodosEffects } from './todos.effects';
+import { TodosService } from '../../todos-service.service';
 
 describe('TodosEffects', () => {
   let actions$: Observable<any>;
@@ -10,7 +11,11 @@ describe('TodosEffects', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [TodosEffects, provideMockActions(() => actions$)],
+      providers: [
+        TodosEffects,
+        provideMockActions(() => actions$),
+        TodosService,
+      ],
     });
 
     effects = TestBed.inject(TodosEffects);
