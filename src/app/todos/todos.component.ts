@@ -1,12 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-// NgRx
-import { Store } from '@ngrx/store';
-import * as TodosActions from 'src/app/todos/store/actions/todos.actions';
-import {
-  selectTodosState,
-  selectTodoItems,
-} from 'src/app/todos/store/selectors/todos.selectors';
+import { TodosFacade } from './todos.facade';
 
 @Component({
   selector: 'app-todos',
@@ -14,12 +7,19 @@ import {
   styleUrls: ['./todos.component.scss'],
 })
 export class TodosComponent implements OnInit {
-  todos$ = this.store.select(selectTodosState);
-  todoItems$ = this.store.select(selectTodoItems);
+  todosState$ = this.todosFacade.todosState$;
+  ids$ = this.todosFacade.ids$;
+  todoItemsById$ = this.todosFacade.todoItemsById$;
+  todoItems$ = this.todosFacade.todoItems$;
+  total$ = this.todosFacade.total$;
 
-  constructor(private store: Store) {}
+  constructor(private todosFacade: TodosFacade) {}
 
   ngOnInit(): void {
-    this.store.dispatch(TodosActions.loadTodos());
+    this.todosFacade.loadTodos();
+  }
+
+  selectTodo(todo) {
+    this.todosFacade.selectTodo(todo);
   }
 }

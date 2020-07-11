@@ -5,6 +5,11 @@ export const selectTodosState = createFeatureSelector<fromTodos.State>(
   fromTodos.todosFeatureKey
 );
 
-export const selectTodoItems = createSelector(selectTodosState, (state) =>
-  Object.values(state.entities)
-);
+// Added these custom selectors
+
+export const {
+  selectIds,
+  selectEntities,
+  selectAll,
+  selectTotal,
+} = fromTodos.adapter.getSelectors(selectTodosState);

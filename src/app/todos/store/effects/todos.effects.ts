@@ -7,7 +7,7 @@ import { map, switchMap, catchError, mapTo, filter, tap } from 'rxjs/operators';
 // NgRx
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as TodosActions from '../actions/todos.actions';
-import { TodosService } from '../../todos-service.service';
+import { TodosService } from '../../todos.service';
 
 @Injectable()
 export class TodosEffects {

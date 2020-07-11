@@ -48,3 +48,5 @@ export const loadTodosFailure = createAction(
   '[Todos] Load todos Failure',
   props<any>()
 );
+
+export const selectTodo = createAction('[Todos] Select todo', props<Todo>());

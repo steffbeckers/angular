@@ -33,7 +33,7 @@ export const reducer = createReducer(
     };
   }),
   on(TodosActions.loadTodosSuccess, (state, { items }) => {
-    return adapter.upsertMany(
+    return adapter.setAll(
       items.map((item) => {
         return {
           ...item,
@@ -46,7 +46,9 @@ export const reducer = createReducer(
       {
         ...state,
         loading: false,
-        selectedTodoId: items[0].id,
+        selectedTodoId: state.selectedTodoId
+          ? state.selectedTodoId
+          : items[0].id,
       }
     );
   }),
@@ -56,6 +58,12 @@ export const reducer = createReducer(
       ...state,
       loading: false,
       error,
+    };
+  }),
+  on(TodosActions.selectTodo, (state, todo) => {
+    return {
+      ...state,
+      selectedTodoId: todo.id,
     };
   })
 );

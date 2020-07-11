@@ -71,28 +71,18 @@
     >
       <button (click)="logout()">Logout</button>
     </div>
-    <div
-      *ngIf="auth.error"
-      fxLayout="column"
-      fxLayoutAlign="start start"
-      fxLayoutGap="10px"
-    >
+    <div *ngIf="auth.error" fxLayout="column" fxLayoutGap="10px">
       <div>Message: {{ auth.error.message }}</div>
       <div>Error: {{ auth.error.error.error }}</div>
     </div>
-    <div
-      *ngIf="auth.isAuthenticated"
-      fxLayout="column"
-      fxLayoutAlign="start start"
-      fxLayoutGap="10px"
-    >
+    <div *ngIf="auth.isAuthenticated" fxLayout="column" fxLayoutGap="10px">
       <h3>Hi! You're successfully authenticated.</h3>
-      <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="5px">
+      <div fxLayout="column" fxLayoutGap="5px">
         <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
           <div>Token</div>
           <button [cdkCopyToClipboard]="auth.token">Copy</button>
         </div>
-        <div class="token">{{ auth.token }}</div>
+        <div class="code-block">{{ auth.token }}</div>
       </div>
     </div>
   </div>

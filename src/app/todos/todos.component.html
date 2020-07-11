@@ -1,30 +1,64 @@
-<ng-container *ngIf="todos$ | async as todosState">
-  <div fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="20px">
-    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
-      <h2>Todos</h2>
-      <div *ngIf="todosState.loading">Loading...</div>
-    </div>
-    <div *ngIf="todosState.error">Message: {{ todosState.error.message }}</div>
-    <div
-      *ngIf="todosState.entities"
-      class="todos"
-      fxLayout="column"
-      fxLayoutAlign="start start"
-      fxLayoutGap="40px"
-    >
+<ng-container *ngIf="todosState$ | async as todosState">
+  <div fxLayout="column" fxLayoutGap="60px">
+    <div fxLayout="column" fxLayoutGap="20px">
+      <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+        <h2>Todos</h2>
+        <div *ngIf="todosState.loading">Loading...</div>
+      </div>
+      <div *ngIf="todosState.error">
+        Message: {{ todosState.error.message }}
+      </div>
       <div
-        *ngFor="let todo of todoItems$ | async"
-        class="todo"
+        *ngIf="todosState.entities"
+        class="todos"
         fxLayout="column"
-        fxLayoutAlign="start stretch"
-        fxLayoutGap="10px"
+        fxLayoutGap="20px"
       >
-        <h3 class="todo__title">{{ todo.title }}</h3>
-        <div class="todo__description" [innerHTML]="todo.description"></div>
-        <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px">
-          <input type="checkbox" [checked]="todo.done" disabled />
-          <div>Done</div>
+        <div
+          *ngFor="let todo of todoItems$ | async"
+          class="todo"
+          fxLayout="column"
+          fxLayoutGap="10px"
+        >
+          <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px">
+            <input type="checkbox" [checked]="todo.done" disabled />
+            <h3
+              class="todo__title"
+              [ngClass]="{ bold: todo.id === todosState.selectedTodoId }"
+              (click)="selectTodo(todo)"
+            >
+              {{ todo.title }}
+            </h3>
+          </div>
+          <ng-container *ngIf="todo.id === todosState.selectedTodoId">
+            <div class="todo__description" [innerHTML]="todo.description"></div>
+          </ng-container>
         </div>
+      </div>
+    </div>
+    <div *ngIf="todosState.selectedTodoId" fxLayout="column" fxLayoutGap="20px">
+      <h3>Selected todo</h3>
+      <div class="code-block">
+        {{ (todoItemsById$ | async)[todosState.selectedTodoId] | json }}
+      </div>
+    </div>
+    <div fxLayout="column" fxLayoutGap="20px">
+      <h3>NgRx selector tests</h3>
+      <div fxLayout="column" fxLayoutGap="5px">
+        <div>IDs</div>
+        <div class="code-block">{{ ids$ | async | json }}</div>
+      </div>
+      <div fxLayout="column" fxLayoutGap="5px">
+        <div>Entities (by ID)</div>
+        <div class="code-block">{{ todoItemsById$ | async | json }}</div>
+      </div>
+      <div fxLayout="column" fxLayoutGap="5px">
+        <div>All (array)</div>
+        <div class="code-block">{{ todoItems$ | async | json }}</div>
+      </div>
+      <div fxLayout="column" fxLayoutGap="5px">
+        <div>Total</div>
+        <div class="code-block">{{ total$ | async }}</div>
       </div>
     </div>
   </div>

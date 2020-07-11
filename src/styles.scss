@@ -45,3 +45,12 @@ img {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: x-large;
 }
+
+// Custom styling
+.code-block {
+  padding: 10px;
+  border: 1px solid #808080;
+  word-break: break-all;
+  font-family: monospace;
+  white-space: pre-wrap;
+}
