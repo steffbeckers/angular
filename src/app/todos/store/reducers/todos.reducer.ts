@@ -60,6 +60,25 @@ export const reducer = createReducer(
       error,
     };
   }),
+  on(TodosActions.loadTodoExtras, (state) => {
+    return {
+      ...state,
+      loading: true,
+      error: null,
+    };
+  }),
+  on(TodosActions.loadTodoExtrasSuccess, (state, { items }) => {
+    // TODO: This isn't working
+    // for (const todoExtra of items) {
+    //   adapter.upsertOne({ id: todoExtra.todo });
+    // }
+
+    return {
+      ...state,
+      loading: false,
+    };
+  }),
+  // on(TodosActions.loadTodosFailure),
   on(TodosActions.selectTodo, (state, todo) => {
     return {
       ...state,

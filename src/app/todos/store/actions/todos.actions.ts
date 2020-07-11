@@ -1,16 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 
-export interface Todo {
-  id: string;
-  title: string;
-  description: string;
-  done: boolean;
-  version: number;
-  created: Date;
-  createdBy: string;
-  lastModified: Date;
-  lastModifiedBy: string;
-  status: string;
+export interface QueryTodosDto {
+  total: number;
+  items: QueryTodosItemDto[];
 }
 
 export interface QueryTodosItemDto {
@@ -34,9 +26,42 @@ export interface QueryTodosItemDto {
   status: string;
 }
 
-export interface QueryTodosDto {
+export interface QueryTodoExtrasDto {
   total: number;
-  items: QueryTodosItemDto[];
+  items: QueryTodoExtrasItemDto[];
+}
+
+export interface QueryTodoExtrasItemDto {
+  id: string;
+  data: {
+    title: {
+      iv: string;
+    };
+  };
+  version: number;
+  created: Date;
+  createdBy: string;
+  lastModified: Date;
+  lastModifiedBy: string;
+  status: string;
+}
+
+export interface Todo {
+  id: string;
+  title: string;
+  description: string;
+  done: boolean;
+  version: number;
+  created: Date;
+  createdBy: string;
+  lastModified: Date;
+  lastModifiedBy: string;
+  status: string;
+  extras?: TodoExtra[];
+}
+
+export interface TodoExtra {
+  title: string;
 }
 
 export const loadTodos = createAction('[Todos] Load todos');
@@ -46,6 +71,19 @@ export const loadTodosSuccess = createAction(
 );
 export const loadTodosFailure = createAction(
   '[Todos] Load todos Failure',
+  props<any>()
+);
+
+export const loadTodoExtras = createAction(
+  '[Todos] Load todo extras',
+  props<QueryTodosItemDto>()
+);
+export const loadTodoExtrasSuccess = createAction(
+  '[Todos] Load todo extras Success',
+  props<QueryTodoExtrasDto>()
+);
+export const loadTodoExtrasFailure = createAction(
+  '[Todos] Load todo extras Failure',
   props<any>()
 );
 

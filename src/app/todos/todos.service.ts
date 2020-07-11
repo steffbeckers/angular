@@ -28,4 +28,16 @@ export class TodosService {
       }
     );
   }
+
+  loadExtrasForTodo(todoId: string) {
+    return this.http.get(
+      // TODO: This isn't working
+      `https://squidex.steffbeckers.eu/api/content/angular/todo-extra?$filter=data/todo/iv eq {${todoId}}`,
+      {
+        headers: {
+          Authorization: `Bearer ${this.auth.token}`,
+        },
+      }
+    );
+  }
 }
