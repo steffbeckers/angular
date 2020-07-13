@@ -14,7 +14,7 @@ Ran commands for NgRx and modules
 
 `ng generate store State --root --statePath store --module app.module.ts`
 
-`ng generate effect store/App --root --module app.module.ts`
+`ng generate effect store/App --root --module app.module.ts --group`
 
 `ng generate module admin --route admin --module app.module.ts`
 
