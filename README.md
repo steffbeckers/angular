@@ -12,27 +12,33 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Ran commands for NgRx and modules
 
-`ng generate store State --root --statePath store --module app.module.ts`
+NgRx
+https://ngrx.io/guide/schematics
+`npm install @ngrx/schematics @ngrx/store @ngrx/effects @ngrx/entity @ngrx/store-devtools`
+`ng generate @ngrx/schematics:store State --root --statePath store --module app.module.ts`
+`ng generate @ngrx/schematics:effect store/App --root --module app.module.ts --group`
 
-`ng generate effect store/App --root --module app.module.ts --group`
+`ng generate @ngrx/schematics:store State --root --statePath store --module app.module.ts`
+
+`ng generate @ngrx/schematics:effect store/App --root --module app.module.ts --group`
 
 `ng generate module admin --route admin --module app.module.ts`
 
-`ng generate feature admin/store/Admin --module admin/admin.module.ts --group`
+`ng generate @ngrx/schematics:feature admin/store/Admin --module admin/admin.module.ts --group`
 
 `ng generate module auth --route auth --module app.module.ts`
 
-`ng generate feature auth/store/Auth --module auth/auth.module.ts --group`
+`ng generate @ngrx/schematics:feature auth/store/Auth --module auth/auth.module.ts --group`
 
-`ng generate action auth/store/Login --group --creators --api`
+`ng generate @ngrx/schematics:action auth/store/Login --group --creators --api`
 
-`ng generate feature store/UI --module app.module.ts --group`
+`ng generate @ngrx/schematics:feature store/UI --module app.module.ts --group`
 
 `ng generate module todos --route todos --module app.module.ts`
 
-`ng generate feature todos/store/Todos --module todos/todos.module.ts --group`
+`ng generate @ngrx/schematics:feature todos/store/Todos --module todos/todos.module.ts --group`
 
-`ng generate effect store/App --module app.module.ts --group`
+`ng generate @ngrx/schematics:effect store/App --module app.module.ts --group`
 
 `npm install @ngrx/router-store`
 

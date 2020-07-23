@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-// RxJS
-import { Observable } from 'rxjs';
-
 // NgRx
 import { Store } from '@ngrx/store';
 import * as fromAuth from 'src/app/auth/store/reducers/auth.reducer';
