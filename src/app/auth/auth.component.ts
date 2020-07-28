@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
-// NgRx
 import { Store } from '@ngrx/store';
 import * as fromAuth from 'src/app/auth/store/reducers/auth.reducer';
 import {
@@ -14,6 +12,7 @@ import {
   EmailOrUsernamePasswordCredentialsDto,
 } from 'src/app/auth/store/actions/auth.actions';
 import { selectAuthState } from './store/selectors/auth.selectors';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-auth',
