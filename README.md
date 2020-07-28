@@ -15,8 +15,6 @@ Ran commands for NgRx and modules
 NgRx
 https://ngrx.io/guide/schematics
 `npm install @ngrx/schematics @ngrx/store @ngrx/effects @ngrx/entity @ngrx/store-devtools`
-`ng generate @ngrx/schematics:store State --root --statePath store --module app.module.ts`
-`ng generate @ngrx/schematics:effect store/App --root --module app.module.ts --group`
 
 `ng generate @ngrx/schematics:store State --root --statePath store --module app.module.ts`
 
